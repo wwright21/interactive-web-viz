@@ -1,4 +1,4 @@
-# interactive-web-viz
+# Interactive Web Visualization
 
 <b>Bellybutton Biodiversity Web Visualization</b>
 
