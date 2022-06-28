@@ -24,31 +24,12 @@ d3.json(url).then(function (data) {
   bubbleChart(samples[0])
   gaugeChart(metadata[0])
 
+  
 
   function buildTable(metadata) {
-    let demoTable = d3.select("#sample-metadata");
-    let fillTable = demoTable.append("table");
-    row = fillTable.append("tr");
-    tableData = row.append("td");
-    let ID = tableData.text('ID: ' + metadata.id)
-    row = fillTable.append("tr")
-    tableData = row.append("td")
-    let ethn = tableData.text('Ethnicity: ' + metadata.ethnicity)
-    row = fillTable.append("tr")
-    tableData = row.append("td")
-    let gender = tableData.text('Gender: ' + metadata.gender)
-    row = fillTable.append("tr")
-    tableData = row.append("td")
-    let age = tableData.text('Age: ' + metadata.age)
-    row = fillTable.append("tr")
-    tableData = row.append("td")
-    let location = tableData.text('Location: ' + metadata.location)
-    row = fillTable.append("tr")
-    tableData = row.append("td")
-    bbtype = tableData.text('bbtype: ' + metadata.bbtype)
-    row = fillTable.append("tr")
-    tableData = row.append("td")
-    wfreq = tableData.text('Wash frequency: ' + metadata.wfreq)
+    // Display each key-value pair from the metadata JSON object
+    Object.entries(metadata).forEach(
+    ([key, value]) => d3.select("#sample-metadata").append("p").text(`${key.toUpperCase()}: ${value}`));
   }
 
   // CREATE THE BAR CHART
@@ -156,19 +137,20 @@ d3.json(url).then(function (data) {
     
     console.log('Dropdown was changed')
     let id = d3.select('#selDataset').node().value
-    console.log(id)
+    // console.log(id)
 
     // json call to re-access data
     d3.json(url).then(function(data) {
       // look for sample that has the id we selected from drop down
       let newSample = data.samples.filter((sample) => {return sample.id == id;})
-      console.log(newSample)
+      // console.log(newSample)
       barChart(newSample[0])
       bubbleChart(newSample[0])
       
       // look for metadata that has the id we selected from drop down
       let newMeta = data.metadata.filter((metadata) => {return metadata.id == id;})
-      console.log(newMeta)
+      // console.log(newMeta)
+      d3.select("#sample-metadata").html("")
       buildTable(newMeta[0])
       gaugeChart(newMeta[0])
     })
