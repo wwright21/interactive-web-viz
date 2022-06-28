@@ -1,5 +1,7 @@
 # interactive-web-viz
 
-<b>This project explores a dataset</b>
+<b>Bellybutton Biodiversity Web Visualization</b>
 
-The dataset reveals that a small handful of microbial species (also called operational taxonomic units, or OTUs, in the study) were present in more than 70% of people, while the rest were relatively rare.
+This project built an interactive, web-based dashboard to explore the Belly Button Biodiversity dataset (source: http://robdunnlab.com/projects/belly-button-biodiversity/). This study catalogs the microbes that colonize the human navels of 153 test subjects.
+
+The dashboard visualizes the findings through several charts which are programmed to update with each selection input from the user.
