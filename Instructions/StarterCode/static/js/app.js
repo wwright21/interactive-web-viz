@@ -64,8 +64,8 @@ d3.json(url).then(function (data) {
 
     var data = [{
       type: 'bar',
-      x: topValuesSliced,
-      y: topIDsSliced,
+      x: topValuesSliced.reverse(),
+      y: topIDsSliced.reverse(),
       orientation: 'h'
 
     }];
