@@ -1,6 +1,4 @@
-# Interactive Web Visualization
-
-<b>Bellybutton Biodiversity Web Visualization</b>
+# Bellybutton Biodiversity Web Visualization
 
 This project built an interactive, web-based dashboard to explore the Belly Button Biodiversity dataset (source: http://robdunnlab.com/projects/belly-button-biodiversity/). This study catalogs the microbes that colonize the human navels of 153 test subjects.
 
