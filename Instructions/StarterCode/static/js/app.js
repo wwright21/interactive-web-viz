@@ -23,7 +23,7 @@ d3.json(url).then(function (data) {
     barChart(samples[0])
     // bubbleChart(samples[0])
 
-    console.log(data.samples)
+    // console.log(data.samples)
 
 
   function buildTable(metadata) {
@@ -54,17 +54,24 @@ d3.json(url).then(function (data) {
   }
 
   function barChart(samples) {
+    topIDs = samples.otu_ids
+    topIDsSliced = topIDs.slice(0,9)
+    topIDsSliced = topIDsSliced.map(i => 'OTU ' + i)
+    console.log(topIDsSliced)
+    topValues = samples.sample_values
+    topValuesSliced = topValues.slice(0,9)
+    console.log(topValuesSliced)
 
-    var data = [
-      {
-        x: ,
-        y: [20, 14, 23],
-        type: 'bar',
-        orientation: 'h'
-      }
-    ];
-    
+    var data = [{
+      type: 'bar',
+      x: topValuesSliced,
+      y: topIDsSliced,
+      orientation: 'h'
+
+    }];
+
     Plotly.newPlot('bar', data);
+       
   }
   
 })
