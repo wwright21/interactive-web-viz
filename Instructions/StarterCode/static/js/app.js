@@ -2,63 +2,73 @@
 const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json"
 
 
-// create the dropdown list
+d3.json(url).then(function (data) {
 
-function init() {
+  console.log(data.metadata)
 
-  d3.json(url).then(function (data) {
+  for (i = 0; i < data.names.length; i++) {
 
-    console.log(data.metadata)
+    let userList = d3.select("#selDataset");
+    otherOption = userList.append("option");
+    otherOption.text(data.names[i]);
+    otherOption.attr("value", data.names[i])
 
-    // totalIDs = []
+  }
 
-    for (i = 0; i < data.names.length; i++) {
+    // declare variables for samples and metadatas from json file
+    const samples = data.samples
+    const metadata = data.metadata
 
-      // totalIDs.push(data.metadata[i].id)
-      let idList = d3.select("#selDataset");
-      namesList = idList.append("option");
-      namesList.text(data.names[i]);
-      // namesList.attr("value", data.names[i])
+    buildTable(metadata[0])
+    barChart(samples[0])
+    // bubbleChart(samples[0])
 
-    }
+    console.log(data.samples)
 
-    function buildTable(metadata) {
-      let demoTable = d3.select("#sample-metadata");
-      let fillTable = demoTable.append("table");
-      row = fillTable.append("tr");
-      tableData = row.append("td");
-      let ID = tableData.text('ID: ' + metadata.id)
-      row = fillTable.append("tr")
-      tableData = row.append("td")
-      let ethn = tableData.text('Ethnicity: ' + metadata.ethnicity)
-      row = fillTable.append("tr")
-      tableData = row.append("td")
-      let gender = tableData.text('Gender: ' + metadata.gender)
-      row = fillTable.append("tr")
-      tableData = row.append("td")
-      let age = tableData.text('Age: ' + metadata.age)
-      row = fillTable.append("tr")
-      tableData = row.append("td")
-      let location = tableData.text('Location: ' + metadata.location)
-      row = fillTable.append("tr")
-      tableData = row.append("td")
-      bbtype = tableData.text('bbtype: ' + metadata.bbtype)
-      row = fillTable.append("tr")
-      tableData = row.append("td")
-      wfreq = tableData.text('Wash frequency: ' + metadata.wfreq)
+
+  function buildTable(metadata) {
+    let demoTable = d3.select("#sample-metadata");
+    let fillTable = demoTable.append("table");
+    row = fillTable.append("tr");
+    tableData = row.append("td");
+    let ID = tableData.text('ID: ' + metadata.id)
+    row = fillTable.append("tr")
+    tableData = row.append("td")
+    let ethn = tableData.text('Ethnicity: ' + metadata.ethnicity)
+    row = fillTable.append("tr")
+    tableData = row.append("td")
+    let gender = tableData.text('Gender: ' + metadata.gender)
+    row = fillTable.append("tr")
+    tableData = row.append("td")
+    let age = tableData.text('Age: ' + metadata.age)
+    row = fillTable.append("tr")
+    tableData = row.append("td")
+    let location = tableData.text('Location: ' + metadata.location)
+    row = fillTable.append("tr")
+    tableData = row.append("td")
+    bbtype = tableData.text('bbtype: ' + metadata.bbtype)
+    row = fillTable.append("tr")
+    tableData = row.append("td")
+    wfreq = tableData.text('Wash frequency: ' + metadata.wfreq)
+  
+  }
+
+  function barChart(samples) {
+
+    var data = [
+      {
+        x: ,
+        y: [20, 14, 23],
+        type: 'bar',
+        orientation: 'h'
+      }
+    ];
     
-    }
-
-    buildTable(data.metadata[0])
-
-    
-
-    
+    Plotly.newPlot('bar', data);
+  }
+  
 })
 
-}
-
-init();
 
 // for (i=0, i<data.metadata.length, i++) {
 //   function optionChanged()
