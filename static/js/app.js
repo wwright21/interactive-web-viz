@@ -70,14 +70,17 @@ d3.json(url).then(function (data) {
 
   // CREATE THE BUBBLE CHART
   function bubbleChart(samples) {
+    IDs = samples.otu_ids
+    Values = samples.sample_values
+    Labels = samples.otu_labels
     var trace2 = {
-      x: topIDsText,
-      y: topValues,
-      text: topLabels,
+      x: IDs,
+      y: Values,
+      text: Labels,
       mode: 'markers',
       marker: {
-        color: topIDs,
-        size: topValues
+        color: IDs,
+        size: Values
       }
     }
 
